@@ -346,15 +346,25 @@ export default function WishlistPage() {
 
                 {/* Logo + heading */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(139,92,246,0.4), rgba(59,130,246,0.3))",
-                        border: "1px solid rgba(139,92,246,0.4)",
-                        color: "white",
-                      }}>GX</div>
-                    <span className="text-sm font-black tracking-tight text-gray-400">GrowthX</span>
-                  </div>
+                 <div className="flex items-center gap-3 mb-5">
+
+  {/* Logo */}
+  <div
+    className="w-9 h-9 rounded-xl flex items-center justify-center"
+    style={{
+      background: "linear-gradient(135deg,#8b5cf6,#60a5fa,#34d399)",
+      boxShadow: "0 6px 18px rgba(139,92,246,0.25)",
+    }}
+  >
+    <span className="text-xs font-black text-white">GX</span>
+  </div>
+
+  {/* Brand */}
+  <span className="text-base font-black tracking-tight text-white">
+    Growth<span className="text-purple-400">X</span>
+  </span>
+
+</div>
 
                   <h1 className="font-black text-white tracking-tighter mb-2" style={{ fontSize: "clamp(26px, 5vw, 32px)", lineHeight: 1.15 }}>
                     Join the wishlist<span style={{ color: "#a78bfa" }}>.</span>

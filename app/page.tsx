@@ -134,7 +134,44 @@ const FAQS = [
    COMPONENTS
 ───────────────────────────────────────── */
 
-function Navbar() {
+export function GrowthXLogoDark() {
+  return (
+    <svg viewBox="0 0 290 180" width="100%">
+      <defs>
+        <linearGradient id="gx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#8b5cf6"/>
+          <stop offset="50%" stopColor="#60a5fa"/>
+          <stop offset="100%" stopColor="#34d399"/>
+        </linearGradient>
+        <linearGradient id="gx-grad-text" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#a78bfa"/>
+          <stop offset="60%" stopColor="#60a5fa"/>
+          <stop offset="100%" stopColor="#34d399"/>
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="290" height="180" rx="20" fill="#0a0a0e"/>
+
+      <rect x="52" y="50" width="60" height="60" rx="14" fill="url(#gx-grad)"/>
+
+      <g stroke="white" strokeWidth="4" fill="none">
+        <polyline points="70,93 70,71 92,71"/>
+        <line x1="77" y1="84" x2="91" y2="98"/>
+        <line x1="91" y1="84" x2="77" y2="98"/>
+      </g>
+
+      <text x="130" y="85" fontSize="28" fill="white" fontWeight="900">
+        Growth
+      </text>
+      <text x="130" y="115" fontSize="28" fill="url(#gx-grad-text)" fontWeight="900">
+        X
+      </text>
+    </svg>
+  );
+}
+
+  
+export  function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -148,7 +185,7 @@ function Navbar() {
     <motion.nav
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4 transition-all duration-300"
       style={{
         background: scrolled ? "rgba(8,8,8,0.85)" : "transparent",
@@ -156,75 +193,92 @@ function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
       }}
     >
-      {/* Logo */}
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-black"
-          style={{
-            background: "linear-gradient(135deg, rgba(139,92,246,0.4), rgba(59,130,246,0.3))",
-            border: "1px solid rgba(139,92,246,0.4)",
-          }}>
-          GX
+      {/* LOGO */}
+      <Link href="/">
+        <div className="flex items-center gap-2 cursor-pointer">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+            style={{
+              background: "linear-gradient(135deg,#8b5cf6,#60a5fa,#34d399)",
+            }}
+          >
+            <span className="text-xs font-black text-white">GX</span>
+          </div>
+          <span className="text-base font-black text-white tracking-tight">
+            Growth<span className="text-purple-400">X</span>
+          </span>
         </div>
-        <span className="text-base font-black tracking-tight text-white">GrowthX</span>
-      </div>
+      </Link>
 
-      {/* Desktop links */}
+      {/* DESKTOP NAV */}
       <div className="hidden md:flex items-center gap-8">
         {NAV_LINKS.map((l) => (
-          <a key={l.label} href={l.href}
-            className="text-sm text-gray-500 hover:text-white transition-colors duration-200 font-medium">
+          <a
+            key={l.label}
+            href={l.href}
+            className="text-sm text-gray-500 hover:text-white transition"
+          >
             {l.label}
           </a>
         ))}
       </div>
 
-      {/* CTA */}
+      {/* DESKTOP CTA */}
       <div className="hidden md:flex items-center gap-3">
-        <Link href="/sign-in">
-          <span className="text-sm text-gray-400 hover:text-white transition-colors font-medium cursor-pointer">Sign in</span>
-        </Link>
+        
+
         <Link href="/wishlist">
           <motion.span
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="cursor-pointer text-sm font-semibold px-4 py-2 rounded-xl transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-pointer px-5 py-2 rounded-xl text-sm font-bold"
             style={{
               background: "white",
               color: "black",
-              boxShadow: "0 4px 20px rgba(255,255,255,0.1)",
+              boxShadow: "0 6px 24px rgba(255,255,255,0.15)",
             }}
           >
-            Get early access
+            Get early access 🚀
           </motion.span>
         </Link>
       </div>
 
-      {/* Mobile burger */}
-      <button className="md:hidden text-gray-400" onClick={() => setMobileOpen(!mobileOpen)}>
-        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+      {/* MOBILE BUTTON */}
+      <button
+        className="md:hidden text-gray-400"
+        onClick={() => setMobileOpen(!mobileOpen)}
+      >
+        {mobileOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      {/* Mobile menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: -15 }}
             className="absolute top-full left-0 right-0 p-6 flex flex-col gap-4"
-            style={{ background: "#0a0a0e", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+            style={{
+              background: "#0a0a0e",
+              borderBottom: "1px solid rgba(255,255,255,0.07)",
+            }}
           >
             {NAV_LINKS.map((l) => (
-              <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-                className="text-sm text-gray-400 hover:text-white transition-colors font-medium">
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-sm text-gray-400 hover:text-white"
+              >
                 {l.label}
               </a>
             ))}
-            <hr style={{ borderColor: "rgba(255,255,255,0.07)" }} />
+
+            <hr className="border-gray-800" />
+
             <Link href="/wishlist">
-              <span className="block text-center py-3 rounded-xl text-sm font-semibold cursor-pointer"
-                style={{ background: "white", color: "black" }}>
-                Get early access
+              <span className="block text-center py-3 rounded-xl text-sm font-bold bg-white text-black">
+                Get early access 🚀
               </span>
             </Link>
           </motion.div>
@@ -830,27 +884,80 @@ function CTASection() {
   );
 }
 
-function Footer() {
+ 
+
+export  function Footer() {
   return (
-    <footer className="border-t px-6 py-10" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black"
-            style={{
-              background: "linear-gradient(135deg, rgba(139,92,246,0.3), rgba(59,130,246,0.2))",
-              border: "1px solid rgba(139,92,246,0.3)",
-            }}>
-            GX
+    <footer
+      className="border-t px-6 py-14 mt-20"
+      style={{ borderColor: "rgba(255,255,255,0.06)" }}
+    >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
+
+        {/* BRAND */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center"
+              style={{
+                background: "linear-gradient(135deg,#8b5cf6,#60a5fa,#34d399)",
+              }}
+            >
+              <span className="text-xs font-black text-white">GX</span>
+            </div>
+            <span className="text-lg font-black text-white">
+              Growth<span className="text-purple-400">X</span>
+            </span>
           </div>
-          <span className="text-sm font-black text-gray-400">GrowthX</span>
+
+          <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
+            Your entire work life, one place. Manage tasks, clients, projects,
+            and growth with AI-powered insights.
+          </p>
         </div>
-        <p className="text-xs text-gray-700 text-center">
-          © 2025 GrowthX. Built with Next.js, MongoDB, Clerk & Claude AI.
+
+        {/* PRODUCT */}
+        <div>
+          <h4 className="text-sm font-bold text-white mb-4">Product</h4>
+          <div className="flex flex-col gap-2 text-sm text-gray-500">
+            <a href="#features" className="hover:text-white">Features</a>
+            <a href="#pricing" className="hover:text-white">Pricing</a>
+            <Link href="/wishlist" className="hover:text-white">Early Access</Link>
+            <a href="#faq" className="hover:text-white">FAQ</a>
+          </div>
+        </div>
+
+        {/* COMPANY */}
+        <div>
+          <h4 className="text-sm font-bold text-white mb-4">Company</h4>
+          <div className="flex flex-col gap-2 text-sm text-gray-500">
+            <a href="#" className="hover:text-white">About</a>
+            <a href="#" className="hover:text-white">Contact</a>
+            <a href="#" className="hover:text-white">Careers</a>
+          </div>
+        </div>
+
+        {/* LEGAL */}
+        <div>
+          <h4 className="text-sm font-bold text-white mb-4">Legal</h4>
+          <div className="flex flex-col gap-2 text-sm text-gray-500">
+            <a href="#" className="hover:text-white">Privacy Policy</a>
+            <a href="#" className="hover:text-white">Terms of Service</a>
+            <a href="#" className="hover:text-white">Help Center</a>
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM BAR */}
+      <div className="max-w-6xl mx-auto mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+      >
+        <p className="text-xs text-gray-600 text-center">
+          © {new Date().getFullYear()} GrowthX. All rights reserved.
         </p>
-        <div className="flex gap-5">
-          {["Privacy", "Terms", "Help"].map((l) => (
-            <a key={l} href="#" className="text-xs text-gray-600 hover:text-white transition-colors">{l}</a>
-          ))}
+
+        <div className="flex items-center gap-4 text-xs text-gray-600">
+          <span>Built with ❤️ using Next.js</span>
         </div>
       </div>
     </footer>
