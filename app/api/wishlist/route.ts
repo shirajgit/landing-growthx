@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
-import Wishlist from  "@/models/Whislist";
+import Wishlist from  "@/models/Wishlist";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
