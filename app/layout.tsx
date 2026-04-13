@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GrowthX",
+  title: "GrowthX | Landing Page",
   description: " A growth marketing agency that helps startups and businesses grow their online presence and reach their target audience through data-driven strategies and innovative marketing techniques.",
 };
 
